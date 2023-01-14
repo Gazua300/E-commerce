@@ -5,7 +5,12 @@ const CardContainer = styled.div`
   border: 1px solid black;
   display: flex;
   flex-direction: column;
-`;
+  @media(max-width: 700px){
+    img {
+      height: 200px;
+    }
+  }
+`
 
 const CardInfo = styled.div`
   display: flex;

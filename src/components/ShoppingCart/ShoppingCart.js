@@ -5,11 +5,15 @@ import styled from 'styled-components';
 const ShoppingCartContainer = styled.div`
   border: 1px solid black;
   padding: 8px;
-`;
+  @media(max-width: 700px){
+    bottom: 5px;
+    width: 90%;
+  }
+`
 
 const CartListContainer = styled.div`
   display: grid;
-  gap: 8px;
+  gap: 8px;  
 `
 
 export class ShoppingCart extends React.Component {

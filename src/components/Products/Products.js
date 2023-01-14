@@ -4,13 +4,16 @@ import styled from 'styled-components';
 
 const ProductsContainer = styled.div`
 
-`;
+`
 
 const ProductsHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
+  @media(max-width: 700px){
+    text-align: center;
+  }
 `
 
 const ProductsGrid = styled.div`
@@ -18,6 +21,10 @@ const ProductsGrid = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   padding: 16px;
+  @media(max-width: 600px){
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 export class Products extends React.Component {

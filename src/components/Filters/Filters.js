@@ -4,13 +4,24 @@ import styled from 'styled-components';
 const FiltersContainer = styled.div`
   border: 1px solid black;
   padding: 8px;
-`;
+  @media(max-width: 700px){
+    text-align: center;
+    width: 90%;
+  }
+`
 
 const InputContainer = styled.label`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 8px;
+  @media(max-width: 700px){
+    flex-direction: row;
+    input {
+      width: 20%;
+      text-align: center;
+    }
+  }
 `
 
 export class Filters extends React.Component {
@@ -18,7 +29,7 @@ export class Filters extends React.Component {
     return <FiltersContainer>
       <h3>Filtros</h3>
         <InputContainer>
-          Valor mínimo:
+          Valor mínimo:&nbsp;
           <input
             type="number"
             value={this.props.minFilter}
@@ -26,7 +37,7 @@ export class Filters extends React.Component {
           />
         </InputContainer>
         <InputContainer>
-          Valor máximo:
+          Valor máximo:&nbsp;
           <input
             type="number"
             value={this.props.maxFilter}
@@ -34,7 +45,7 @@ export class Filters extends React.Component {
           />
         </InputContainer>
         <InputContainer>
-          Busca por nome:
+          Busca por nome:&nbsp;
           <input
             type="text"
             value={this.props.nameFilter}
