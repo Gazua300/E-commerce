@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Filters  from './components/Filters/Filters';
 import Products from './components/Products/Products';
-import { ShoppingCart } from './components/ShoppingCart/ShoppingCart';
+import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import { AppContainer } from './styles'
 
 

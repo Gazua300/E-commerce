@@ -13,16 +13,13 @@ const ItemContainer = styled.div`
 `
 
 
-export class ShoppingCartItem extends React.Component {
-  render() {
-    return <ItemContainer>
-      <p>{this.props.cartItem.quantity}x</p>
-      <p>{this.props.cartItem.name}</p>
-      <button 
-        onClick={() => this.props.onRemoveProductFromCart(this.props.cartItem.id)}
-      >
-        Remover
-      </button>
-    </ItemContainer>
-  }
+export default function ShoppingCartItem(props){
+  return <ItemContainer>
+    <p>{props.cartItem.quantity}x</p>
+    <p>{props.cartItem.name}</p>
+    <button 
+      onClick={() => props.onRemoveProductFromCart(props.cartItem.id)}>
+      Remover
+    </button>
+  </ItemContainer>
 }
