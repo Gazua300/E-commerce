@@ -33,7 +33,7 @@ export default function ProductCard(props){
       <img src={product.photo} alt="Imagem do produto"/>
       <CardInfo>
         <p>{product.name}</p>
-        <p>R${product.price},00</p>
+        <p>R$ {Math.floor(Math.random() * 1000)},00</p>
         <AddToCartButton onClick={() => props.onAddProductToCart(product.id)}>
           Adicionar ao carrinho
         </AddToCartButton>

@@ -18,7 +18,7 @@ const ProductsHeader = styled.div`
 
 const ProductsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   padding: 16px;
   @media(max-width: 600px){
@@ -55,7 +55,7 @@ export default function Products(props){
        <ProductsHeader>
          <p>Quantidade de produtos: {filteredAndOrderedList.length}</p>
          <label>
-          Ordenação:
+          Ordenação:&nbsp;
            <select value={sort} onChange={onChangeSort}>
              <option value={'CRESCENTE'}>Crescente</option>
              <option value={'DECRESCENTE'}>Decrescente</option>
