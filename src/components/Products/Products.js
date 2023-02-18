@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ProductCard } from './ProductCard'
 import styled from 'styled-components';
 
@@ -27,45 +27,48 @@ const ProductsGrid = styled.div`
   }
 `
 
-export class Products extends React.Component {
 
-  state = {
-    sort: 'DECRESCENTE'
+
+export default function Products(props){
+  const [sort, setSort] = useState('DECRESCENTE')
+
+
+
+  const getFilteredAndOrderedList = () => {
+    return props.products
+      .filter((product) => props.maxFilter ? product.price < props.maxFilter : true)
+      .filter((product) => props.minFilter ? product.price > props.minFilter : true)
+      .filter((product) => props.nameFilter ? product.name.includes(props.nameFilter) : true)
+      .sort((a, b) => sort === 'CRESCENTE' ? a.price - b.price : b.price - a.price)
   }
 
-  getFilteredAndOrderedList = () => {
-    return this.props.products
-      .filter((product) => this.props.maxFilter ? product.price < this.props.maxFilter : true)
-      .filter((product) => this.props.minFilter ? product.price > this.props.minFilter : true)
-      .filter((product) => this.props.nameFilter ? product.name.includes(this.props.nameFilter) : true)
-      .sort((a, b) => this.state.sort === 'CRESCENTE' ? a.price - b.price : b.price - a.price)
+  const onChangeSort = (event) => {
+    setSort(event.target.value)
   }
 
-  onChangeSort = (event) => {
-    this.setState({sort: event.target.value})
-  }
 
-  render() {
-    const filteredAndOrderedList = this.getFilteredAndOrderedList()
-    return <ProductsContainer>
-      <ProductsHeader>
-        <p>Quantidade de produtos: {filteredAndOrderedList.length}</p>
-        <label>
+  const filteredAndOrderedList = getFilteredAndOrderedList()
+
+
+  return(
+    <ProductsContainer>
+       <ProductsHeader>
+         <p>Quantidade de produtos: {filteredAndOrderedList.length}</p>
+         <label>
           Ordenação:
-          <select value={this.state.sort} onChange={this.onChangeSort}>
-            <option value={'CRESCENTE'}>Crescente</option>
-            <option value={'DECRESCENTE'}>Decrescente</option>
-          </select>
-        </label>
-      </ProductsHeader>
-      <ProductsGrid>
-        {filteredAndOrderedList.map((product) => {
+           <select value={sort} onChange={onChangeSort}>
+             <option value={'CRESCENTE'}>Crescente</option>
+             <option value={'DECRESCENTE'}>Decrescente</option>
+           </select>
+         </label>
+       </ProductsHeader>
+       <ProductsGrid>
+         {filteredAndOrderedList.map((product) => {
           return <ProductCard
             product={product}
-            onAddProductToCart={this.props.onAddProductToCart}
-          />
-        })}
+            onAddProductToCart={props.onAddProductToCart} />
+         })}
       </ProductsGrid>
     </ProductsContainer>
-  }
+  )
 }

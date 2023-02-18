@@ -1,5 +1,7 @@
 import React from 'react'
-import styled from 'styled-components';
+import styled from 'styled-components'
+
+
 
 const FiltersContainer = styled.div`
   border: 1px solid black;
@@ -24,34 +26,33 @@ const InputContainer = styled.label`
   }
 `
 
-export class Filters extends React.Component {
-  render() {
-    return <FiltersContainer>
-      <h3>Filtros</h3>
-        <InputContainer>
-          Valor mínimo:&nbsp;
-          <input
-            type="number"
-            value={this.props.minFilter}
-            onChange={this.props.onChangeMinFilter}
-          />
-        </InputContainer>
+
+
+export default function Filters(props){
+    return(
+        <FiltersContainer>
+          <h3>Filtros</h3>
+          <InputContainer>
+            Valor mínimo:&nbsp;
+            <input
+              type="number"
+              value={props.minFilter}
+              onChange={props.onChangeMinFilter} />
+          </InputContainer>
         <InputContainer>
           Valor máximo:&nbsp;
           <input
             type="number"
-            value={this.props.maxFilter}
-            onChange={this.props.onChangeMaxFilter}
-          />
+            value={props.maxFilter}
+            onChange={props.onChangeMaxFilter} />
         </InputContainer>
         <InputContainer>
           Busca por nome:&nbsp;
           <input
             type="text"
-            value={this.props.nameFilter}
-            onChange={this.props.onChangeNameFilter}
-          />
+            value={props.nameFilter}
+            onChange={props.onChangeNameFilter} />
         </InputContainer>
-    </FiltersContainer>
-  }
+        </FiltersContainer>
+    )
 }
