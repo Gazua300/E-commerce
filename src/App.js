@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios'
 import Filters  from './components/Filters/Filters';
 import Products from './components/Products/Products';
@@ -23,7 +24,7 @@ const App = ()=>{
   }, [])
 
   const getProducts = ()=>{
-    axios.get('https://e-commerce-server-44dt.onrender.com/products').then(res=>{
+    axios.get('https://e-commerce-three-lovat.vercel.app/products').then(res=>{
       setProducts(res.data)
     }).catch(e=>{
       alert(e.response.data)
