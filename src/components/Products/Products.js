@@ -30,7 +30,7 @@ const ProductsGrid = styled.div`
 
 
 export default function Products(props){
-  const [sort, setSort] = useState('DECRESCENTE')
+  const [sort, setSort] = useState('')
 
 
 
@@ -54,13 +54,14 @@ export default function Products(props){
     <ProductsContainer>
        <ProductsHeader>
          <p>Quantidade de produtos: {filteredAndOrderedList.length}</p>
-         <label>
-          Ordenação:&nbsp;
-           <select value={sort} onChange={onChangeSort}>
-             <option value={'CRESCENTE'}>Crescente</option>
-             <option value={'DECRESCENTE'}>Decrescente</option>
-           </select>
-         </label>
+          <label>
+            <select className='form-select' 
+                value={sort} onChange={onChangeSort}>
+              <option value='' defaultValue>Ordenação</option>
+              <option value={'CRESCENTE'}>Crescente</option>
+              <option value={'DECRESCENTE'}>Decrescente</option>
+            </select>
+          </label>
        </ProductsHeader>
        <ProductsGrid>
          {filteredAndOrderedList.map((product) => {

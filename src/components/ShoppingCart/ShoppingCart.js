@@ -2,14 +2,7 @@ import React from 'react'
 import ShoppingCartItem from './ShoppingCartItem'
 import styled from 'styled-components';
 
-const ShoppingCartContainer = styled.div`
-  border: 1px solid black;
-  padding: 8px;
-  @media(max-width: 700px){
-    bottom: 5px;
-    width: 90%;
-  }
-`
+
 
 const CartListContainer = styled.div`
   display: grid;
@@ -27,7 +20,7 @@ export default function ShoppingCart(props){
     return totalValue
   }
   
-  return <ShoppingCartContainer>
+  return <div className='border border-2 shadow-lg rounded p-2'>
     <h3>Carrinho:</h3>
     <CartListContainer>
       {props.productsInCart.map((product) => {
@@ -37,5 +30,5 @@ export default function ShoppingCart(props){
       })}
     </CartListContainer>
     <p>Valor total: R${getTotalValue()},00</p>
-  </ShoppingCartContainer>
+  </div>
 }

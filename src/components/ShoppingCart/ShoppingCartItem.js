@@ -15,9 +15,8 @@ const ItemContainer = styled.div`
 
 export default function ShoppingCartItem(props){
   return <ItemContainer>
-    <p>{props.cartItem.quantity}x</p>
-    <p>{props.cartItem.name}</p>
-    <button 
+    <p>{props.cartItem.quantity}x {props.cartItem.name}</p>
+    <button className='btn btn-dark'
       onClick={() => props.onRemoveProductFromCart(props.cartItem.id)}>
       Remover
     </button>

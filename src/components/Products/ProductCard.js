@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components';
 
 const CardContainer = styled.div`
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
   @media(max-width: 700px){
@@ -29,14 +28,18 @@ const AddToCartButton = styled.button`
 
 export default function ProductCard(props){
     const product = props.product
-    return <CardContainer>
-      <img src={product.photo} alt="Imagem do produto"/>
-      <CardInfo>
-        <p>{product.name}</p>
-        <p>R$ {Math.floor(Math.random() * 1000)},00</p>
-        <AddToCartButton onClick={() => props.onAddProductToCart(product.id)}>
-          Adicionar ao carrinho
-        </AddToCartButton>
-      </CardInfo>
-    </CardContainer>
+    return(
+      <CardContainer className='border border-3 rounded'> 
+        <img src={product.photo} alt="Imagem do produto"/>
+        <CardInfo>
+          <p>{product.name}</p>
+          <p>R$ {Math.floor(Math.random() * 1000)},00</p>
+          <AddToCartButton className='btn btn-dark'
+            onClick={() => props.onAddProductToCart(product.id)}>
+            Adicionar ao carrinho
+          </AddToCartButton>
+        </CardInfo>
+      </CardContainer>
+      )
+      
 }
